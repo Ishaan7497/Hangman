@@ -136,7 +136,7 @@ def play_hangman(x_list, chosen_words):
 
     new_blanks = vowel(word, blanks)
     lives = 5
-    print(f"The word has {new_blanks} letters({len(word) - len(list(filter(lambda x: word[x] == ' ', range(len(word)))))}). Guesses: {lives}")
+    print(f"The word has {new_blanks} letters({len(word) - len(list(filter(lambda x: word[x] == ' ', range(len(word)))))}).\n Guesses: {lives}")
 
     while lives > 0:
         x = input("Guess a letter: ").upper()
@@ -215,5 +215,4 @@ while True:
     else:
      print("Invalid theme. Pick general, movies or famous people.")
      selected_theme = theme()
-     
-        
+    
