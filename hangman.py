@@ -4,7 +4,7 @@ import random
 
 play = input("Start? (y/n) : ")
 if play.lower() == 'y':
-    print("Game is starting...\n Welcome to Hangman")
+    print("Game is starting...\nWelcome to Hangman")
 elif play.lower() == 'n':
     print("Exiting game...")
     exit()
@@ -14,7 +14,13 @@ else:
    
 
 def theme():
-    t = input("Choose a theme:\n1) General\n2) Movies\n3) Famous People\n      Enter: ").lower()
+    t = input("\nChoose a theme:\n1) General\n2) Movies\n3) Famous People\n\nEnter: ").lower()
+    if t == 1:
+        t = "General"
+    elif t == 2:
+        t = "Movies"
+    else:
+        t = "Famous People"
     print("Theme chosen:", t)
     return t
 
@@ -103,6 +109,7 @@ def display_hangman(stage):
     elif stage == "stage5":
         print(stage5)
 
+
 def vowel(w, b):
     vowels = ['a', 'e', 'i', 'o', 'u']
     num = len(w) // 7
@@ -126,18 +133,33 @@ def play_hangman(x_list, chosen_words):
             chosen_words = []
 
     chosen_words.append(wordy)
-
+    
     blanks = "__ " * len(word)
     blanks = blanks.split()
     for i in range(len(word)):
         if word[i] == " ":
-            blanks[i] = " "
+            blanks[i] = ' '
     used_letters = []
-
+   
     new_blanks = vowel(word, blanks)
+    new_blanks = " ".join(blanks)
     lives = 5
-    print(f"The word has {new_blanks} letters({len(word) - len(list(filter(lambda x: word[x] == ' ', range(len(word)))))}).\n Guesses: {lives}")
+    spaces = 0
+    for i in blanks:
+        if blanks == " ":
+            spaces += 1
+    msg = "BEEN DISPLAYED (Vowel may have more than one occurence in the word)."
+    
+    print(f"\nThe word has {new_blanks} letters({len(word) - len(list(filter(lambda x: word[x] == ' ', range(len(word)))))}).\n Guesses: {lives}")
+    if len(word) - spaces >= 7:
+        print(f"1 VOWEL HAS {msg}")
+    elif len(word) - spaces >= 14:
+        print(f"2 VOWELS HAVE {msg}")
+    elif len(word) - spaces >= 21:
+        print(f"3 VOWELS HAVE {msg}.")
 
+
+    
     while lives > 0:
         x = input("Guess a letter: ").upper()
         if lives == 5:
@@ -197,17 +219,17 @@ chosen_words2 = []
 chosen_words3 = []
 while True:
 
-    if selected_theme == '1':
+    if selected_theme == 'General':
 
         play_hangman(word_list, chosen_words1)
         play_again()
 
-    elif selected_theme == "2":
+    elif selected_theme == "Movies":
 
         play_hangman(movie_list, chosen_words2)
         play_again()
 
-    elif selected_theme == '3':
+    elif selected_theme == 'Famous People':
         play_hangman(famous_people, chosen_words3)
         play_again()
     

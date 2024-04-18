@@ -74,13 +74,20 @@ word_list = [
     "week", "weight", "well", "west", "wet", "wheel", "when", "where", "while", "whip", "whistle", "white", 
     "who", "why", "wide", "will", "wind", "window", "wine", "wing", "winter", "wire", "wise", "with", "woman", 
     "wood", "wool", "word", "work", "worm", "wound", "writing", "wrong", "year", "yellow", "yes", "yesterday", 
-    "you", "young", "Bernhard", "Breytenbach", "Android", "Jazz"
+    "you", "young", "Bernhard", "Breytenbach", "Android", "Jazz","Dune"
 ]
 
-movie_list = ["The Godfather","Titanic","Juarassic Park","Avengers Endgame","Oppenheimer","Inside Out","Interstellar","Harry Potter","Free Guy","The Adam Project","Black Adam",
-              " The Terminator","Toy Story","The Lion King","The Matrix","Forest Gump","Kungfu Panda","Cars","Top Gun","Beauty And The Beast","Fast And Furious","Tomb Raider","Avatar","Spiderman",
+movie_list = ["The Godfather","Titanic","Juarassic Park","Avengers Endgame","Oppenheimer","Inside Out",
+              "Interstellar","Harry Potter","Free Guy","The Adam Project","Black Adam",
+              " The Terminator","Toy Story","The Lion King","The Matrix","Forrest Gump","Kungfu Panda","Cars","Top Gun",
+              "Beauty And The Beast","Fast And Furious","Tomb Raider","Avatar","Spiderman",
               "Life Of Pi","Ted","Star Wars","Jaws","The Dark Knight","Man of Steel","The Lord of The Rings","The Wizard of Oz",
-              "Iron Man","Godzilla","King Kong","Red Notice","The Sixth Sense","Inception","Mission Impossible",""]
+              "Iron Man","Godzilla","King Kong","Red Notice","The Sixth Sense","Inception","Mission Impossible",
+              "Ice Age","Barbie","The Incredibles","Rush Hour","Spy Kids","The Hunger Games","Maze Runner","The Conjuring",
+              "Joker","Dune","Die Hard"
+            
+            ]
+
 
 famous_people = [ 
     "Albert Einstein",
@@ -88,7 +95,7 @@ famous_people = [
     "William Shakespeare",
     "Nelson Mandela",
     "Mahatma Gandhi",
-    "Martin Luther King Jr.",
+    "Martin Luther King Jr",
     "Abraham Lincoln",
     "Mother Teresa",
     "Steve Jobs",
@@ -164,7 +171,14 @@ famous_people = [
     "Virat Kolhi",
     "Stephen Curry",
     "Koby Bryant",
-    "Lebron James"
+    "Lebron James",
+    "Jimmy Fallon",
+    "Timothee Chalamet",
+    "Jake Gyllenhaal",
+    "Jim Carrey",
+    "Jackie Chan",
+    
+
 
 
 ]
