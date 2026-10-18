@@ -2,29 +2,31 @@ from words import word_list, movie_list, famous_people
 
 import random
 
-play = input("Start? (y/n) : ")
-if play.lower() == 'y':
-    print("Game is starting...\nWelcome to Hangman")
-elif play.lower() == 'n':
-    print("Exiting game...")
-    exit()
-else:
-    print("Invalid input. Please enter 'y' to start or 'n' to exit.")
-    exit()
-   
+def ask_yes_no(prompt):
+    """Keep asking until the player answers y/yes or n/no."""
+    while True:
+        answer = input(prompt).strip().lower()
+        if answer in ('y', 'yes'):
+            return True
+        if answer in ('n', 'no'):
+            return False
+        print("Please type in 'y' or 'n'.")
+
 
 def theme():
-    t = input("\nChoose a theme:\n1) General\n2) Movies\n3) Celebrities\n\nEnter: ").lower()
-    if t == '1' or t == 'general':
-        t = "General"
-    elif t == '2' or t == 'movies':
-        t = "Movies"
-    else:
-        t = "Celebrities"
-    print("Theme chosen:", t)
-    return t
-
-selected_theme = theme()
+    while True:
+        t = input("\nChoose a theme:\n1) General\n2) Movies\n3) Celebrities\n\nEnter: ").strip().lower()
+        if t == '1' or t == 'general':
+            t = "General"
+        elif t == '2' or t == 'movies':
+            t = "Movies"
+        elif t == '3' or t == 'celebrities':
+            t = "Celebrities"
+        else:
+            print("Invalid theme. Pick 1, 2 or 3.")
+            continue
+        print("Theme chosen:", t)
+        return t
 
 
 
@@ -191,38 +193,28 @@ def play_hangman(x_list, chosen_words):
 
 
 def play_again():
+    return ask_yes_no("Play again? (y/n): ")
+
+
+THEMES = {"General": word_list, "Movies": movie_list, "Celebrities": famous_people}
+
+
+def main():
+    if not ask_yes_no("Start? (y/n) : "):
+        print("Exiting game...")
+        return
+    print("Game is starting...\nWelcome to Hangman")
+    selected_theme = theme()
+    chosen_words = {name: [] for name in THEMES}
     while True:
-        p = input("Play again? (y/n): ").lower()
-        if p == "y":
-            return True
-        elif p == 'n':
+        play_hangman(THEMES[selected_theme], chosen_words[selected_theme])
+        if not play_again():
             print("Exiting...")
-            quit()
-        else:
-            print("Please type in 'y' to play again or 'n' to quit.")
+            return
 
 
-chosen_words1 = []
-chosen_words2 = []
-chosen_words3 = []
-while True:
-
-    if selected_theme == 'General':
-
-        play_hangman(word_list, chosen_words1)
-        play_again()
-
-    elif selected_theme == "Movies":
-
-        play_hangman(movie_list, chosen_words2)
-        play_again()
-
-    elif selected_theme == 'Celebrities':
-        play_hangman(famous_people, chosen_words3)
-        play_again()
-    
-    
-    else:
-     print("Invalid theme. Pick general, movies or famous people.")
-     selected_theme = theme()
-    
+if __name__ == "__main__":
+    try:
+        main()
+    except (KeyboardInterrupt, EOFError):
+        print("\nExiting...")
