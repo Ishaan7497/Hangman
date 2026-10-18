@@ -156,18 +156,9 @@ def play_hangman(x_list, chosen_words):
 
 
     
+    display_hangman("stage0")
     while lives > 0:
         x = input("Guess a letter: ").upper()
-        if lives == 5:
-            display_hangman("stage0")
-        elif lives == 4:
-            display_hangman("stage1")
-        elif lives == 3:
-            display_hangman("stage2")
-        elif lives == 2:
-            display_hangman("stage3")
-        elif lives == 1:
-            display_hangman("stage4")
 
         if len(x) != 1 or not x.isalpha():
             print("Please enter a singular letter.\n")
@@ -188,9 +179,11 @@ def play_hangman(x_list, chosen_words):
         else:
             print("Incorrect. The letter is not in the word.")
             lives -= 1
+            if lives > 0:
+                display_hangman(f"stage{5 - lives}")
             print("Guesses Left: ", lives)
             used_letters.append(x)
-            print("Used words: ", used_letters, "\n")
+            print("Used letters: ", used_letters, "\n")
 
     print("You ran out of guesses. The word is:", word)
     display_hangman("stage5")
