@@ -111,14 +111,19 @@ def display_hangman(stage):
 
 
 def vowel(w, b):
+    """Reveal one vowel in `b` for every 7 letters in `w` (spaces don't count).
+
+    Returns how many vowels were revealed."""
     vowels = ['a', 'e', 'i', 'o', 'u']
-    num = len(w) // 7
-    for j in range(num):
-        for i in range(len(w)):
-            if w[i].lower() in vowels:
-                b[i] = w[i]
-                break
-    return b
+    num = (len(w) - w.count(" ")) // 7
+    shown = 0
+    for i in range(len(w)):
+        if shown == num:
+            break
+        if w[i].lower() in vowels and b[i] == "__":
+            b[i] = w[i]
+            shown += 1
+    return shown
     
 
 def play_hangman(x_list, chosen_words):
@@ -139,22 +144,15 @@ def play_hangman(x_list, chosen_words):
             blanks[i] = ' '
     used_letters = []
    
-    new_blanks = vowel(word, blanks)
-    new_blanks = " ".join(blanks)
+    revealed = vowel(word, blanks)
     lives = 5
-    spaces = 0
-    for i in blanks:
-        if blanks == " ":
-            spaces += 1
     msg = "BEEN DISPLAYED (Vowel may have more than one occurence in the word)."
-    
-    print(f"\nThe word has {new_blanks} letters({len(word) - len(list(filter(lambda x: word[x] == ' ', range(len(word)))))}).\n Guesses: {lives}")
-    if len(word) - spaces >= 7:
+
+    print(f"\nThe word has {' '.join(blanks)} letters({len(word) - word.count(' ')}).\n Guesses: {lives}")
+    if revealed == 1:
         print(f"1 VOWEL HAS {msg}")
-    elif len(word) - spaces >= 14:
-        print(f"2 VOWELS HAVE {msg}")
-    elif len(word) - spaces >= 21:
-        print(f"3 VOWELS HAVE {msg}.")
+    elif revealed > 1:
+        print(f"{revealed} VOWELS HAVE {msg}")
 
 
     
