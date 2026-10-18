@@ -211,7 +211,6 @@ def play_again():
             quit()
         else:
             print("Please type in 'y' to play again or 'n' to quit.")
-            break
 
 
 chosen_words1 = []
