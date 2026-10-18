@@ -14,13 +14,13 @@ else:
    
 
 def theme():
-    t = input("\nChoose a theme:\n1) General\n2) Movies\n3) Famous People\n\nEnter: ").lower()
-    if t == 1:
+    t = input("\nChoose a theme:\n1) General\n2) Movies\n3) Celebrities\n\nEnter: ").lower()
+    if t == '1' or t == 'general':
         t = "General"
-    elif t == 2:
+    elif t == '2' or t == 'movies':
         t = "Movies"
     else:
-        t = "Famous People"
+        t = "Celebrities"
     print("Theme chosen:", t)
     return t
 
@@ -229,7 +229,7 @@ while True:
         play_hangman(movie_list, chosen_words2)
         play_again()
 
-    elif selected_theme == 'Famous People':
+    elif selected_theme == 'Celebrities':
         play_hangman(famous_people, chosen_words3)
         play_again()
     
