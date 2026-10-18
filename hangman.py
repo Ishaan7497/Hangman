@@ -122,16 +122,14 @@ def vowel(w, b):
     
 
 def play_hangman(x_list, chosen_words):
-    x_list = [word for word in x_list if "'" not in word]
-    wordy = random.choice(x_list)
+    x_list = [word.strip() for word in x_list if "'" not in word]
+    # Don't repeat a word until every word in the theme has been played.
+    remaining = [w for w in x_list if w not in chosen_words]
+    if not remaining:
+        chosen_words.clear()
+        remaining = x_list
+    wordy = random.choice(remaining)
     word = wordy.upper()
-    chosen_words.sort()
-    x_list.sort()
-    while wordy in chosen_words:
-        wordy = random.choice(x_list)
-        if chosen_words == x_list:
-            chosen_words = []
-
     chosen_words.append(wordy)
     
     blanks = "__ " * len(word)
