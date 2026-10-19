@@ -13,6 +13,8 @@ This is a command-line version of the popular Hangman game, where you guess lett
 
 You pick a theme (everyday words, movies or celebrities). Longer answers get a free vowel as a hint, the gallows is drawn in ASCII art as you lose lives, and no word repeats until you've played every word in the theme. It uses only the Python standard library, and a test suite covers the game logic, the menus and the word lists.
 
+## Why I built this
+
 ## Features
 
 - **3 themes:** ~850 general words, 50 movies, 85 celebrities
